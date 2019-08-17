@@ -1,10 +1,15 @@
 language: php
 
+before_install:
+ - echo -e "-----BEGIN OPENSSH PRIVATE KEY-----\n$(echo $SSH_PRIVATE_KEY | fold -w71)\n-----END OPENSSH PRIVATE KEY-----" > "$HOME/.ssh/id_ed25519"
+ - chmod 600 "$HOME/.ssh/id_ed25519"
+
 install:
  - composer install
 
 before_script:
- - git clone https://github.com/phpseclib/phpseclib.git
+ - git clone git@github.com:phpseclib/phpseclib.git
+ - git clone git@github.com:phpseclib/api-docs.git --branch gh-pages
 
 script:
  - vendor/bin/sami.php update sami.conf.php
