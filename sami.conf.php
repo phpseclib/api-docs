@@ -24,7 +24,7 @@ return new Sami\Sami($iterator, array(
     'theme'                => 'enhanced',
     'versions'             => $versions,
     'title'                => 'phpseclib API Documentation',
-    'build_dir'            => __DIR__.'/api-docs/%version%',
+    'build_dir'            => __DIR__.'/api.phpseclib.org/%version%',
     'cache_dir'            => __DIR__.'/cache/%version%',
     'default_opened_level' => 2,
     'store'                => new MyArrayStore,
