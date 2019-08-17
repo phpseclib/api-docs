@@ -1,5 +1,8 @@
 language: php
 
+install:
+ - composer install
+
 before_script:
  - git clone https://github.com/phpseclib/phpseclib.git
 
