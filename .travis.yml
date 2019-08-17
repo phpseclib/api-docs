@@ -1,1 +1,7 @@
 language: php
+
+before_script:
+ - git clone https://github.com/phpseclib/phpseclib.git
+
+script:
+ - vendor/bin/sami.php update sami.conf.php
