@@ -14,7 +14,7 @@ $root = realpath(__DIR__) . '/phpseclib/';
 $iterator = Symfony\Component\Finder\Finder::create()
     ->files()
     ->name('*.php')
-    ->in($root);
+    ->in($root . 'phpseclib');
 
 $versions = Doctum\Version\GitVersionCollection::create($root)
     ->add('1.0')
