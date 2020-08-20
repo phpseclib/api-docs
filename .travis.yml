@@ -13,7 +13,7 @@ before_script:
  - find api.phpseclib.org -mindepth 1 -maxdepth 1 -type d -not -name .git -exec rm -rf {} \;
 
 script:
- - vendor/bin/sami.php update sami.conf.php
+ - vendor/bin/doctum.php update doctum.conf.php
 
 after_success:
  - cd api.phpseclib.org
