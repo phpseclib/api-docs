@@ -9,16 +9,17 @@ class MyArrayStore extends Doctum\Store\ArrayStore
     }
 }
 
-$root = realpath(__DIR__) . '/';
+$root = realpath(__DIR__) . '/phpseclib/';
 
 $iterator = Symfony\Component\Finder\Finder::create()
     ->files()
     ->name('*.php')
-    ->in($root . 'phpseclib');
+    ->in($root);
 
 $versions = Doctum\Version\GitVersionCollection::create($root)
     ->add('1.0')
     ->add('2.0')
+    ->add('3.0')
     ->add('master');
 
 return new Doctum\Doctum($iterator, [
