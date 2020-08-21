@@ -19,6 +19,6 @@ script:
 
 after_success:
  - cd api.phpseclib.org
- - ls -lahR api.phpseclib.org
+ - ls -lahR
  - git add . && git commit -m "Updated via Travis CI."
  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then git push; else echo 'skipped.'; fi
