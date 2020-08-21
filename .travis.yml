@@ -8,13 +8,17 @@ install:
  - composer install
 
 before_script:
- - git clone git@github.com:phpseclib/phpseclib.git
- - git clone git@github.com:phpseclib/api.phpseclib.org.git
+ - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then export GIT_SRC="git@github.com:"; else export GIT_SRC="https://github.com/"; fi
+ - git clone ${GIT_SRC}phpseclib/phpseclib.git
+ - git clone ${GIT_SRC}phpseclib/api.phpseclib.org.git
  - find api.phpseclib.org -mindepth 1 -maxdepth 1 -type d -not -name .git -exec rm -rf {} \;
 
 script:
- - vendor/bin/sami.php update sami.conf.php
+  # The build exits 1 but the render works, so we will check that now
+ - vendor/bin/doctum.php update --no-interaction --verbose --force doctum.conf.php || ls cache/master/DOCTUM_VERSION
 
 after_success:
  - cd api.phpseclib.org
- - git add . && git commit -m "Updated via Travis CI." && git push
+ - ls -lahR api.phpseclib.org
+ - git add . && git commit -m "Updated via Travis CI."
+ - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then git push; else echo 'skipped.'; fi
