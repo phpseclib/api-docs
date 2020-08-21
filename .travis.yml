@@ -15,7 +15,7 @@ before_script:
 
 script:
   # The build exits 1 but the render works, so we will check that now
- - vendor/bin/doctum.php update --no-interaction --verbose --force doctum.conf.php || ls phpseclib/cache/3.0/DOCTUM_VERSION
+ - vendor/bin/doctum.php update --no-interaction --verbose --force doctum.conf.php || ls cache/master/DOCTUM_VERSION
 
 after_success:
  - cd api.phpseclib.org
