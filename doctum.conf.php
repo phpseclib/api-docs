@@ -16,7 +16,7 @@ $versions = Doctum\Version\GitVersionCollection::create($root)
 return new Doctum\Doctum($iterator, [
     'versions'             => $versions,
     'title'                => 'phpseclib API Documentation',
-    'build_dir'            => $root . 'api.phpseclib.org/%version%',
-    'cache_dir'            => $root . 'cache/%version%',
+    'build_dir'            => __DIR__ . '/api.phpseclib.org/%version%',
+    'cache_dir'            => __DIR__ . '/cache/%version%',
     'remote_repository'    => new Doctum\RemoteRepository\GitHubRemoteRepository('phpseclib/phpseclib', $root),
 ]);
